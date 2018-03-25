@@ -22,4 +22,43 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Models\Customer::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'cnpj' => $faker->numberBetween(11111111111111,99999999999999),
+        'address' => $faker->address,
+        'email' => $faker->unique()->safeEmail,
+    ];
+});
 
+$factory->define(App\Models\Product::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->sentence,
+    ];
+});
+
+$factory->define(App\Models\Update::class, function (Faker $faker) {
+    return [
+        'product_id' => random_int(1,20),
+        'path' => 'http://localhost/'.str_random(4),
+        'news' => $faker->text
+    ];
+});
+
+$factory->define(App\Models\Order::class, function (Faker $faker) {
+    return [
+       // 'customer_id' => random_int(1,40),
+        'product_id'  => random_int(1,20),
+        'observation' => $faker->text,
+        'blocked'     => random_int(0,1),
+    ];
+});
+
+$factory->define(App\Models\Phone::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'phone'  => $faker->phoneNumber,
+        'observation' => $faker->text,
+    ];
+});

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUpdatesTable extends Migration
+class CreateUpdateHistoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateUpdatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('updates', function (Blueprint $table) {
+        Schema::create('update_history', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();           
-            $table->string('path');
-            $table->text('news')->nullable();
+            $table->integer('update_id')->unsigned();
+            $table->integer('order_id')->unsigned();
+            $table->string('description');
+            $table->macAddress('device',12);
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateUpdatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('updates');
+        Schema::dropIfExists('update_history');
     }
 }
