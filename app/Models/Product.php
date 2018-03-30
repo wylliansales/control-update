@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\Update;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
 /**
  * Class Product
@@ -15,10 +17,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string name
  * @property string description
  */
-class Product extends Model
+class Product extends Model implements Transformable
 {
-    use SoftDeletes;
+    use SoftDeletes, TransformableTrait;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['name', 'description'];
     protected $dates = ['deleted_at'];
 
@@ -31,5 +38,5 @@ class Product extends Model
     {
         return $this->hasMany(Update::class, 'product_id', 'id');
     }
-}
 
+}
