@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  *
  * @property int id
+ * @property int customer_id
  * @property string name
  * @property string phone
  * @property string observation
@@ -18,7 +19,7 @@ class Phone extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'phone', 'observation'];
+    protected $fillable = ['customer_id', 'name', 'phone', 'observation'];
     protected $dates = ['deleted_at'];
 
     public function customer()

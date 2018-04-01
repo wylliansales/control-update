@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
+Route::middleware('')->group(function (){
     Route::prefix('customers')->group(function (){
         Route::get('', 'CustomerController@index');
         Route::get('/{id}', 'CustomerController@show');
@@ -40,3 +41,4 @@ use Illuminate\Http\Request;
         Route::put('/{id}', 'OrderController@update');
         Route::delete('/{id}', 'OrderController@destroy');
     });
+});

@@ -13,7 +13,7 @@ class CustomersTableSeeder extends Seeder
     {
         factory(App\Models\Customer::class,40)->create()->each(function ($c){
             $c->phones()->save(factory(App\Models\Phone::class,2)->make());
-            $c->order()->save(factory(App\Models\Order::class)->make());
+            $c->orders()->save(factory(App\Models\Order::class)->make());
         });
     }
 }

@@ -35,8 +35,8 @@ class Customer extends Model implements Transformable
         return $this->hasMany(Phone::class,'customer_id', 'id');
     }
 
-    public function order()
+    public function orders()
     {
-        return $this->hasOne(Order::class,'customer_id', 'id');
+        return $this->hasMany(Order::class,'customer_id', 'id');
     }
 }
