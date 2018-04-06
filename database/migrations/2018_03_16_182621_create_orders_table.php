@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id')->unsigned(); 
             $table->integer('product_id')->unsigned();           
             $table->text('observation');
+            $table->integer('amount_of_computer')->nullable();
             $table->boolean('blocked')->default(false);
             $table->softDeletes();
             $table->timestamps();

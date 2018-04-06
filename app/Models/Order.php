@@ -27,7 +27,7 @@ class Order extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['customer_id', 'product_id', 'observation', 'blocked'];
+    protected $fillable = ['customer_id', 'product_id', 'observation', 'amount_of_computer', 'blocked',];
     protected $dates = ['deleted_at'];
 
     public function customer()
